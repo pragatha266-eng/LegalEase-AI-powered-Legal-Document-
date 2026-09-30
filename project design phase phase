@@ -1,1 +1,164 @@
 project design phase phase
+If your project is **“LegalEase: AI-Powered Legal Document Generator”**, the **Project Design Phase** can be written like this for a BCA project report:
+
+# Project Design Phase
+
+### 1. System Architecture
+
+LegalEase is designed as a web-based application that uses Artificial Intelligence to generate legal documents from information provided by the user. The system consists of a user interface, application server, AI processing module, document generation module, and database.
+
+**Basic architecture:**
+
+```text
+             USER
+               │
+               ▼
+       ┌─────────────────┐
+       │  User Interface │
+       │   (Web / App)   │
+       └────────┬────────┘
+                │
+                ▼
+       ┌─────────────────┐
+       │ Application     │
+       │ Server / Backend│
+       └────────┬────────┘
+                │
+        ┌───────┴────────┐
+        ▼                ▼
+┌──────────────┐  ┌──────────────┐
+│ AI Processing│  │   Database   │
+│    Module    │  │              │
+└──────┬───────┘  └──────────────┘
+       │
+       ▼
+┌──────────────────┐
+│ Document          │
+│ Generation Module │
+└────────┬─────────┘
+         │
+         ▼
+   Legal Document
+    (PDF / DOCX)
+```
+
+### 2. User Interface Design
+
+The user interface is designed to be simple and user-friendly. Users can select the type of legal document they need, enter the required information, and generate the document.
+
+Main screens include:
+
+* **Login/Registration Page**
+* **Home/Dashboard**
+* **Document Selection Page**
+* **Legal Information Input Form**
+* **AI Document Generation Page**
+* **Document Preview Page**
+* **Download/Save Page**
+* **Document History**
+
+### 3. Input Design
+
+The system collects information required for generating a particular legal document. Input fields change according to the selected document type.
+
+For example, for a rental agreement, the system may request:
+
+* Landlord name
+* Tenant name
+* Property address
+* Rental amount
+* Security deposit
+* Agreement duration
+* Date of agreement
+* Other relevant terms
+
+The system validates the entered information before sending it to the AI module.
+
+### 4. AI Processing Design
+
+The AI module processes the user's information and generates a structured legal document. The system uses predefined prompts/templates and AI processing to convert the user's plain-language requirements into an organized document.
+
+```text
+User Information
+       ↓
+Input Validation
+       ↓
+Prompt / Template Creation
+       ↓
+AI Processing
+       ↓
+Legal Document Draft
+       ↓
+Validation & Formatting
+       ↓
+Final Document
+```
+
+### 5. Database Design
+
+The database stores user information, document types, generated documents, and document history.
+
+**Main tables may include:**
+
+**User**
+
+* User_ID
+* Name
+* Email
+* Password
+
+**Document**
+
+* Document_ID
+* User_ID
+* Document_Type
+* Created_Date
+* Document_Content
+* Status
+
+**Document_Type**
+
+* Type_ID
+* Type_Name
+* Description
+* Template
+
+### 6. Functional Modules
+
+The proposed system is divided into the following modules:
+
+1. **User Management Module** – registration, login and profile management.
+2. **Document Selection Module** – allows users to select the required legal document.
+3. **Information Collection Module** – collects necessary details through forms.
+4. **AI Generation Module** – generates the document based on user inputs.
+5. **Document Preview Module** – allows users to review the generated document.
+6. **Document Management Module** – saves, downloads and manages generated documents.
+7. **History Module** – maintains previously generated documents.
+
+### 7. Security Design
+
+Since legal documents can contain sensitive information, the system should provide appropriate security measures such as:
+
+* Secure user authentication
+* Password protection
+* Input validation
+* Secure database access
+* Access control
+* Protection of generated documents
+* HTTPS for communication
+
+### 8. Output Design
+
+The final output is a properly formatted legal document. The user can preview the document and download it in a suitable format such as **PDF or DOCX**.
+
+The generated document should contain:
+
+* Document title
+* Parties' details
+* Relevant clauses
+* Terms and conditions
+* Dates
+* Signature sections
+* Other document-specific information
+
+**Note:** LegalEase should clearly inform users that AI-generated documents are drafts/information tools and may require review by a qualified legal professional before use.
