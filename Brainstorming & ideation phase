@@ -1,1 +1,233 @@
 Brainstorming & ideation phase
+## LegalEase — AI-Powered Legal Document Generator
+
+### Project Brainstorming: Analysis Phase
+
+**Project idea:**
+**LegalEase** is an AI-powered web application that helps users generate commonly required legal documents from simple user inputs. Instead of requiring users to understand complex legal terminology and document formats, the system collects relevant information through a guided form and generates a structured legal-document draft.
+
+### 1. Problem Statement
+
+Creating legal documents manually can be difficult because:
+
+* Legal documents often use complex language.
+* Users may not know which information is required.
+* Preparing documents manually takes considerable time.
+* Formatting and structuring documents correctly can be challenging.
+* Professional legal assistance may not be immediately accessible for simple drafting needs.
+
+**LegalEase aims to simplify the document-drafting process by providing an AI-assisted document-generation system.**
+
+### 2. Proposed Solution
+
+The system will allow a user to:
+
+1. Select the required document type.
+2. Enter the necessary details through a simple form.
+3. Validate the entered information.
+4. Use an AI model to generate a draft.
+5. Review and edit the generated document.
+6. Download or print the document.
+
+**Basic workflow:**
+
+```text
+User
+  ↓
+Login / Registration
+  ↓
+Select Document Type
+  ↓
+Enter Required Details
+  ↓
+Input Validation
+  ↓
+AI Document Generation
+  ↓
+Review & Edit
+  ↓
+Generate Final Document
+  ↓
+Download / Print
+```
+
+### 3. Possible Document Types
+
+For an academic project, you could initially support:
+
+* Rental/Lease Agreement
+* Affidavit
+* Non-Disclosure Agreement (NDA)
+* Employment Agreement
+* Sale Agreement
+* Partnership Agreement
+* Authorization Letter
+* Notice Letter
+* Complaint/Application Letter
+
+The first version should support **a limited number of document types** rather than attempting to cover every type of legal document.
+
+### 4. Main Modules
+
+| Module              | Purpose                               |
+| ------------------- | ------------------------------------- |
+| User Management     | Registration, login and profile       |
+| Document Selection  | Choose the required document          |
+| Dynamic Form        | Collect document-specific information |
+| AI Generator        | Generate the document draft           |
+| Document Editor     | Review and modify the draft           |
+| Document Management | Save previous documents               |
+| PDF/Word Export     | Download generated documents          |
+| Admin Module        | Manage templates and document types   |
+
+### 5. AI Component
+
+The AI component can be designed to convert structured user information into a properly formatted document.
+
+**Example:**
+
+```text
+User Input
+Name: Arun Kumar
+Address: Kochi
+Document: Rental Agreement
+Monthly Rent: ₹15,000
+Duration: 11 months
+        ↓
+       AI
+        ↓
+Structured Rental Agreement Draft
+```
+
+The AI should be treated as a **drafting assistant**, not as a substitute for a qualified lawyer. The application should clearly display that generated documents may require legal review before actual use.
+
+### 6. Functional Requirements
+
+The system should be able to:
+
+* Register and authenticate users.
+* Allow users to select document categories.
+* Display appropriate fields based on document type.
+* Validate mandatory information.
+* Generate a legal-document draft.
+* Allow users to edit generated content.
+* Save documents.
+* Download documents as PDF/DOCX.
+* Maintain document history.
+* Provide a disclaimer about AI-generated legal content.
+
+### 7. Non-Functional Requirements
+
+* **Security:** Protect user-provided personal information.
+* **Usability:** Simple interface suitable for non-technical users.
+* **Performance:** Generate documents within a reasonable time.
+* **Reliability:** Prevent loss of saved documents.
+* **Scalability:** Allow additional document templates later.
+* **Maintainability:** Keep AI, database, frontend and backend components modular.
+
+### 8. Suggested Technology Stack
+
+For a **BCA-level project**, a practical stack could be:
+
+**Frontend**
+
+* HTML
+* CSS
+* JavaScript
+* Bootstrap/React
+
+**Backend**
+
+* Python Flask/Django **or** Node.js/Express
+
+**Database**
+
+* MySQL
+
+**AI**
+
+* An LLM API for document generation
+
+**Document Generation**
+
+* Python libraries such as `python-docx`
+* PDF-generation library
+
+### 9. Basic Database Design
+
+Possible tables:
+
+```text
+USER
+ ├── user_id
+ ├── name
+ ├── email
+ └── password
+
+DOCUMENT
+ ├── document_id
+ ├── user_id
+ ├── document_type
+ ├── title
+ ├── content
+ └── created_date
+
+TEMPLATE
+ ├── template_id
+ ├── document_type
+ ├── template_name
+ └── template_content
+```
+
+Relationship:
+
+```text
+USER 1 ─────────── N DOCUMENT
+
+TEMPLATE 1 ─────── N DOCUMENT
+```
+
+### 10. Key Innovation
+
+The main idea behind **LegalEase** is the combination of:
+
+**Simple forms + AI-assisted drafting + document templates + editing + export**
+
+This makes the system easier to use than a conventional template-only document generator.
+
+### 11. Scope for Future Development
+
+Future versions could include:
+
+* Multiple regional languages.
+* Voice-based input.
+* E-signature integration.
+* Document comparison.
+* Clause recommendations.
+* Automatic identification of missing information.
+* Lawyer-review integration.
+* Mobile application.
+* Jurisdiction-specific templates.
+* Secure cloud document storage.
+
+### 12. Important Limitation
+
+Because legal requirements vary by **jurisdiction and document type**, the project should not claim that every AI-generated document is legally valid. A good design would include a prominent notice such as:
+
+> **LegalEase generates document drafts for informational and drafting assistance. Users should verify applicable laws and seek qualified legal advice where necessary.**
+
+### 13. Proposed Project Objective
+
+**To design and develop an AI-powered legal document generation system that simplifies the creation of structured legal-document drafts by collecting user information through guided forms and transforming it into customizable documents.**
+
+### 14. Expected Outcome
+
+At the end of the project, a user should be able to go from:
+
+**“I need a legal document, but I don't know how to prepare it.”**
+
+to:
+
+**Select document → Fill details → Generate draft → Review → Download.**
+
+This gives you a clear and manageable foundation for the **LegalEase BCA project**.
