@@ -1,1 +1,1187 @@
 LegalEase_web_app.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LegalEase | AI Legal Document Generator</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f7fb;
+            color: #1f2937;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            background: #14213d;
+            color: white;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #fca311;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        nav ul li a:hover {
+            color: #fca311;
+        }
+
+        /* HERO SECTION */
+
+        .hero {
+            min-height: 80vh;
+            background: linear-gradient(
+                135deg,
+                #14213d,
+                #1f3a68
+            );
+
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 60px 8%;
+            gap: 50px;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 55px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #fca311;
+        }
+
+        .hero p {
+            line-height: 1.7;
+            font-size: 18px;
+            color: #dbe4f0;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            background: #fca311;
+            color: #14213d;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background: #ffb52e;
+        }
+
+        .hero-card {
+            background: white;
+            color: #1f2937;
+            width: 380px;
+            padding: 35px;
+            border-radius: 18px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+        }
+
+        .hero-card h3 {
+            margin-bottom: 20px;
+            color: #14213d;
+        }
+
+        .hero-card div {
+            margin: 15px 0;
+            padding: 13px;
+            background: #f4f7fb;
+            border-radius: 8px;
+        }
+
+        /* FEATURES */
+
+        .section {
+            padding: 70px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            color: #14213d;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #6b7280;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .feature-icon {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 12px;
+            color: #14213d;
+        }
+
+        .feature-card p {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        /* GENERATOR */
+
+        .generator-section {
+            background: #eaf0f8;
+        }
+
+        .generator-container {
+            max-width: 1000px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .form-box,
+        .output-box {
+            background: white;
+            padding: 30px;
+            border-radius: 14px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .form-box h3,
+        .output-box h3 {
+            margin-bottom: 20px;
+            color: #14213d;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 15px;
+            margin-bottom: 7px;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 7px;
+            outline: none;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #14213d;
+        }
+
+        textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        .generate-btn {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        #output {
+            background: #fafafa;
+            border: 1px solid #e5e7eb;
+            padding: 20px;
+            min-height: 400px;
+            white-space: pre-wrap;
+            line-height: 1.7;
+            overflow-y: auto;
+        }
+
+        .output-actions {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .secondary-btn {
+            background: #14213d;
+            color: white;
+        }
+
+        .secondary-btn:hover {
+            background: #213a67;
+        }
+
+        /* HOW IT WORKS */
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .step {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .step-number {
+            width: 55px;
+            height: 55px;
+            background: #fca311;
+            color: #14213d;
+            border-radius: 50%;
+            margin: auto;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        /* DISCLAIMER */
+
+        .disclaimer {
+            background: #fff8e6;
+            border-left: 5px solid #fca311;
+            padding: 20px;
+            max-width: 1000px;
+            margin: auto;
+            line-height: 1.6;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #14213d;
+            color: #d1d5db;
+            padding: 30px 8%;
+            text-align: center;
+        }
+
+        footer strong {
+            color: white;
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width: 850px) {
+
+            nav ul {
+                display: none;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero-card {
+                width: 100%;
+                max-width: 450px;
+                text-align: left;
+            }
+
+            .features,
+            .steps {
+                grid-template-columns: 1fr;
+            }
+
+            .generator-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<nav>
+    <div class="logo">
+        Legal<span>Ease</span>
+    </div>
+
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#generator">Generator</a></li>
+        <li><a href="#about">How It Works</a></li>
+    </ul>
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <h1>
+            Legal Documents Made
+            <span>Simple</span>
+        </h1>
+
+        <p>
+            LegalEase is an AI-powered legal document generator
+            designed to help users quickly create basic legal
+            document drafts using simple information.
+        </p>
+
+        <a href="#generator" class="btn">
+            Generate Document
+        </a>
+
+    </div>
+
+
+    <div class="hero-card">
+
+        <h3>⚖️ Documents You Can Create</h3>
+
+        <div>📃 Rental Agreement</div>
+
+        <div>💼 Employment Agreement</div>
+
+        <div>🔒 Non-Disclosure Agreement</div>
+
+        <div>📄 Service Agreement</div>
+
+        <div>✉️ Legal Notice Draft</div>
+
+    </div>
+
+</section>
+
+
+<!-- FEATURES -->
+
+<section class="section" id="features">
+
+    <div class="section-title">
+
+        <h2>Why LegalEase?</h2>
+
+        <p>
+            Create structured legal-document drafts using a
+            simple and user-friendly interface.
+        </p>
+
+    </div>
+
+
+    <div class="features">
+
+        <div class="feature-card">
+
+            <div class="feature-icon">🤖</div>
+
+            <h3>AI Powered</h3>
+
+            <p>
+                LegalEase can be connected to an AI API to
+                generate customized document drafts based on
+                information entered by users.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">⚡</div>
+
+            <h3>Fast Generation</h3>
+
+            <p>
+                Instead of manually writing a document from
+                scratch, users can generate an initial draft
+                within seconds.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">🔐</div>
+
+            <h3>Simple & Secure Design</h3>
+
+            <p>
+                The interface is designed to collect only
+                information required for creating the selected
+                document.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- GENERATOR -->
+
+<section class="section generator-section" id="generator">
+
+    <div class="section-title">
+
+        <h2>Legal Document Generator</h2>
+
+        <p>
+            Enter the required information and generate a
+            document draft.
+        </p>
+
+    </div>
+
+
+    <div class="generator-container">
+
+        <!-- FORM -->
+
+        <div class="form-box">
+
+            <h3>Document Information</h3>
+
+
+            <label>Document Type</label>
+
+            <select id="documentType">
+
+                <option value="rental">
+                    Rental Agreement
+                </option>
+
+                <option value="employment">
+                    Employment Agreement
+                </option>
+
+                <option value="nda">
+                    Non-Disclosure Agreement
+                </option>
+
+                <option value="service">
+                    Service Agreement
+                </option>
+
+                <option value="notice">
+                    Legal Notice Draft
+                </option>
+
+            </select>
+
+
+            <label>First Party Name</label>
+
+            <input
+                type="text"
+                id="party1"
+                placeholder="Enter first party name"
+            >
+
+
+            <label>Second Party Name</label>
+
+            <input
+                type="text"
+                id="party2"
+                placeholder="Enter second party name"
+            >
+
+
+            <label>Date</label>
+
+            <input
+                type="date"
+                id="agreementDate"
+            >
+
+
+            <label>Location / Jurisdiction</label>
+
+            <input
+                type="text"
+                id="location"
+                placeholder="Example: Kerala, India"
+            >
+
+
+            <label>Additional Details</label>
+
+            <textarea
+                id="details"
+                placeholder="Enter important terms, payment details, duration, purpose, etc."
+            ></textarea>
+
+
+            <button
+                class="btn generate-btn"
+                onclick="generateDocument()"
+            >
+                ✨ Generate Document
+            </button>
+
+        </div>
+
+
+        <!-- OUTPUT -->
+
+        <div class="output-box">
+
+            <h3>Generated Document</h3>
+
+            <div id="output">
+Your generated document will appear here.
+            </div>
+
+
+            <div class="output-actions">
+
+                <button
+                    class="btn secondary-btn"
+                    onclick="copyDocument()"
+                >
+                    Copy
+                </button>
+
+                <button
+                    class="btn"
+                    onclick="downloadDocument()"
+                >
+                    Download
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- HOW IT WORKS -->
+
+<section class="section" id="about">
+
+    <div class="section-title">
+
+        <h2>How LegalEase Works</h2>
+
+        <p>
+            Generate a document draft in three simple steps.
+        </p>
+
+    </div>
+
+
+    <div class="steps">
+
+        <div class="step">
+
+            <div class="step-number">1</div>
+
+            <h3>Select Document</h3>
+
+            <p>
+                Choose the type of legal document that you want
+                to create.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">2</div>
+
+            <h3>Enter Information</h3>
+
+            <p>
+                Enter party names, dates, location and important
+                agreement details.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">3</div>
+
+            <h3>Generate Draft</h3>
+
+            <p>
+                The system prepares a structured draft that can
+                be reviewed and edited.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- DISCLAIMER -->
+
+<section class="section">
+
+    <div class="disclaimer">
+
+        <strong>⚠ Important Disclaimer:</strong>
+
+        LegalEase is an educational/demo application and does
+        not provide legal advice. Documents generated by the
+        application are templates or drafts and may not satisfy
+        the legal requirements of a particular jurisdiction.
+        Users should have important documents reviewed by a
+        qualified legal professional before relying on them.
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+        <strong>LegalEase</strong> |
+        AI Powered Legal Document Generator
+    </p>
+
+    <p style="margin-top:10px;">
+        BCA Project © 2026
+    </p>
+
+</footer>
+
+
+<script>
+
+function generateDocument() {
+
+    const type =
+        document.getElementById("documentType").value;
+
+    const party1 =
+        document.getElementById("party1").value.trim();
+
+    const party2 =
+        document.getElementById("party2").value.trim();
+
+    const date =
+        document.getElementById("agreementDate").value;
+
+    const location =
+        document.getElementById("location").value.trim();
+
+    const details =
+        document.getElementById("details").value.trim();
+
+
+    if (
+        party1 === "" ||
+        party2 === "" ||
+        date === ""
+    ) {
+
+        alert(
+            "Please enter the party names and date."
+        );
+
+        return;
+    }
+
+
+    let documentText = "";
+
+
+    /* RENTAL AGREEMENT */
+
+    if (type === "rental") {
+
+        documentText = `
+RENTAL AGREEMENT
+
+Date: ${date}
+Location: ${location || "Not specified"}
+
+This Rental Agreement is entered into between:
+
+LANDLORD:
+${party1}
+
+AND
+
+TENANT:
+${party2}
+
+1. PURPOSE
+
+The Landlord agrees to provide the property described by the parties for rental use subject to the terms and conditions of this agreement.
+
+2. TERM
+
+The rental arrangement shall begin on ${date} and shall continue for the period mutually agreed between the parties.
+
+3. RENT AND PAYMENT
+
+The Tenant agrees to make rental payments according to the payment terms agreed upon by both parties.
+
+4. USE OF PROPERTY
+
+The Tenant shall use the property responsibly and shall not use it for unlawful activities.
+
+5. MAINTENANCE
+
+The Tenant shall maintain the property in a reasonable condition. Any major repairs shall be handled according to the responsibilities agreed between the parties.
+
+6. TERMINATION
+
+Either party may terminate this agreement according to the notice requirements and applicable laws.
+
+7. ADDITIONAL TERMS
+
+${details || "No additional terms provided."}
+
+8. GOVERNING LAW
+
+This agreement shall be interpreted according to the applicable laws of ${location || "the relevant jurisdiction"}.
+
+SIGNATURES
+
+Landlord:
+
+${party1}
+
+Signature: ______________________
+
+
+Tenant:
+
+${party2}
+
+Signature: ______________________
+
+
+DISCLAIMER:
+This document is a general draft generated for educational purposes and is not legal advice. It should be reviewed for compliance with applicable law before use.
+`;
+
+    }
+
+
+    /* EMPLOYMENT AGREEMENT */
+
+    else if (type === "employment") {
+
+        documentText = `
+EMPLOYMENT AGREEMENT
+
+Date: ${date}
+Location: ${location || "Not specified"}
+
+This Employment Agreement is made between:
+
+EMPLOYER:
+${party1}
+
+AND
+
+EMPLOYEE:
+${party2}
+
+1. EMPLOYMENT
+
+The Employer agrees to employ the Employee under the terms contained in this agreement.
+
+2. DUTIES
+
+The Employee agrees to perform the duties and responsibilities assigned by the Employer in a professional manner.
+
+3. COMPENSATION
+
+Salary, wages, incentives and other compensation shall be provided according to the terms mutually agreed between the parties.
+
+4. WORKING CONDITIONS
+
+Working hours, leave, workplace policies and other employment conditions shall be governed by company policies and applicable law.
+
+5. CONFIDENTIALITY
+
+The Employee shall protect confidential information received during employment where required by applicable law and contract.
+
+6. TERMINATION
+
+Employment may be terminated according to the terms agreed by the parties and applicable employment law.
+
+7. ADDITIONAL TERMS
+
+${details || "No additional terms provided."}
+
+8. GOVERNING LAW
+
+This agreement shall be governed by applicable laws in ${location || "the relevant jurisdiction"}.
+
+SIGNATURES
+
+Employer:
+
+${party1}
+
+Signature: ______________________
+
+
+Employee:
+
+${party2}
+
+Signature: ______________________
+
+
+DISCLAIMER:
+This is a general educational template and not legal advice. Employment requirements differ by jurisdiction.
+`;
+
+    }
+
+
+    /* NDA */
+
+    else if (type === "nda") {
+
+        documentText = `
+NON-DISCLOSURE AGREEMENT
+
+Date: ${date}
+
+This Non-Disclosure Agreement is entered into between:
+
+DISCLOSING PARTY:
+${party1}
+
+AND
+
+RECEIVING PARTY:
+${party2}
+
+1. CONFIDENTIAL INFORMATION
+
+Confidential Information may include business information, technical data, financial information, customer information, trade information and other information identified as confidential.
+
+2. OBLIGATION OF CONFIDENTIALITY
+
+The Receiving Party agrees to take reasonable measures to protect Confidential Information and not disclose it except where authorized or legally required.
+
+3. PURPOSE
+
+Confidential Information shall only be used for the purpose agreed upon between the parties.
+
+4. EXCLUSIONS
+
+Information that is publicly available, independently developed, lawfully received from another source, or otherwise not legally protectable may be excluded from confidentiality obligations.
+
+5. RETURN OF INFORMATION
+
+Upon request, confidential material should be returned or destroyed where reasonably required.
+
+6. ADDITIONAL TERMS
+
+${details || "No additional terms provided."}
+
+7. GOVERNING LAW
+
+This agreement shall be governed according to applicable laws in ${location || "the relevant jurisdiction"}.
+
+SIGNATURES
+
+${party1}
+
+Signature: ______________________
+
+
+${party2}
+
+Signature: ______________________
+
+
+DISCLAIMER:
+This is a general draft and should not be treated as legal advice.
+`;
+
+    }
+
+
+    /* SERVICE AGREEMENT */
+
+    else if (type === "service") {
+
+        documentText = `
+SERVICE AGREEMENT
+
+Date: ${date}
+
+This Service Agreement is entered into between:
+
+SERVICE PROVIDER:
+${party1}
+
+AND
+
+CLIENT:
+${party2}
+
+1. SERVICES
+
+The Service Provider agrees to provide the services mutually agreed upon with the Client.
+
+2. PAYMENT
+
+The Client agrees to pay the Service Provider according to the agreed payment schedule and conditions.
+
+3. RESPONSIBILITIES
+
+Both parties agree to perform their respective responsibilities in good faith.
+
+4. DURATION
+
+This agreement shall remain effective for the period agreed between the parties unless terminated earlier.
+
+5. TERMINATION
+
+Either party may terminate this agreement in accordance with the agreed notice requirements and applicable law.
+
+6. ADDITIONAL TERMS
+
+${details || "No additional details provided."}
+
+7. GOVERNING LAW
+
+This agreement shall be governed according to applicable laws in ${location || "the relevant jurisdiction"}.
+
+SIGNATURES
+
+Service Provider:
+
+${party1}
+
+Signature: ______________________
+
+
+Client:
+
+${party2}
+
+Signature: ______________________
+
+
+DISCLAIMER:
+This document is a general educational template and not legal advice.
+`;
+
+    }
+
+
+    /* LEGAL NOTICE */
+
+    else if (type === "notice") {
+
+        documentText = `
+LEGAL NOTICE DRAFT
+
+Date: ${date}
+
+From:
+
+${party1}
+
+To:
+
+${party2}
+
+Location:
+${location || "Not specified"}
+
+
+SUBJECT: FORMAL NOTICE
+
+
+Dear ${party2},
+
+This notice is being issued by ${party1} concerning the matter described below.
+
+DETAILS OF THE MATTER:
+
+${details || "No additional details were provided."}
+
+You are requested to review the matter and take appropriate action within a reasonable or legally applicable period.
+
+If the matter is not resolved, the sender may consider available lawful remedies after obtaining appropriate legal advice.
+
+Sincerely,
+
+${party1}
+
+Signature: ______________________
+
+
+DISCLAIMER:
+This is only a general notice draft generated for educational purposes. The appropriate wording, notice periods and legal requirements depend on the specific facts and applicable law. Consider obtaining advice from a qualified legal professional.
+`;
+
+    }
+
+
+    document.getElementById("output").innerText =
+        documentText;
+}
+
+
+/* COPY DOCUMENT */
+
+function copyDocument() {
+
+    const text =
+        document.getElementById("output").innerText;
+
+    if (
+        text === "Your generated document will appear here."
+    ) {
+
+        alert("Please generate a document first.");
+
+        return;
+    }
+
+
+    navigator.clipboard.writeText(text)
+        .then(function () {
+
+            alert("Document copied!");
+
+        });
+
+}
+
+
+/* DOWNLOAD DOCUMENT */
+
+function downloadDocument() {
+
+    const text =
+        document.getElementById("output").innerText;
+
+    if (
+        text === "Your generated document will appear here."
+    ) {
+
+        alert("Please generate a document first.");
+
+        return;
+    }
+
+
+    const blob =
+        new Blob(
+            [text],
+            {type: "text/plain"}
+        );
+
+
+    const link =
+        document.createElement("a");
+
+
+    link.href =
+        URL.createObjectURL(blob);
+
+
+    link.download =
+        "LegalEase_Document.txt";
+
+
+    link.click();
+
+
+    URL.revokeObjectURL(link.href);
+}
+
+</script>
+
+</body>
+</html>
