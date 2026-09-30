@@ -1,1 +1,78 @@
 project demonstration phase
+If your project is **“LegalEase: AI-Powered Legal Document Generator”** and you are preparing for the **Project Demonstration Phase**, I can help you create the complete demo material.
+
+### Project Demonstration – LegalEase
+
+**Project Title:**
+**LegalEase: AI-Powered Legal Document Generator**
+
+**Project Objective:**
+LegalEase is an AI-powered application that helps users generate basic legal documents quickly by collecting required information through a simple interface. The system uses AI to transform the user's inputs into a structured legal-document draft.
+
+### Main Modules
+
+1. **User Registration/Login**
+
+   * Users can create an account and securely log in.
+   * User details can be stored in a database.
+
+2. **Document Type Selection**
+
+   * User selects the type of document required.
+   * Examples:
+
+     * Rental Agreement
+     * Employment Agreement
+     * Affidavit
+     * Non-Disclosure Agreement (NDA)
+     * Leave and License Agreement
+
+3. **User Input Form**
+
+   * The system asks for information relevant to the selected document.
+   * Example: names, addresses, dates, terms, payment details, etc.
+
+4. **AI Document Generation**
+
+   * AI processes the entered information.
+   * It generates a structured **draft** based on the selected document type.
+
+5. **Preview and Editing**
+
+   * Users can review the generated document.
+   * They can make necessary corrections before downloading.
+
+6. **Download/Print**
+
+   * The final draft can be downloaded as a PDF or printed.
+
+7. **Document History**
+
+   * Previously generated documents can be viewed by the user.
+
+### Demonstration Flow
+
+You can demonstrate your project in this order:
+
+**Login → Select Document Type → Enter Details → Generate Document → AI Processing → Preview → Edit → Download PDF**
+
+### Example Demo
+
+**Selected Document:** Rental Agreement
+
+User enters:
+
+* Landlord Name: Arun Kumar
+* Tenant Name: Rahul
+* Property Address: Kochi, Kerala
+* Monthly Rent: ₹15,000
+* Security Deposit: ₹50,000
+* Agreement Period: 11 months
+
+The system generates a structured rental-agreement **draft** using these details.
+
+### Important Disclaimer
+
+For your project demonstration, mention that **LegalEase generates legal-document drafts and does not replace a qualified lawyer or legal advice**. Users should review documents and obtain professional advice where appropriate.
+
+If you want, I can also prepare your **complete Project Demonstration Phase content**, including **problem statement, objectives, existing system, proposed system, technologies used, system architecture, modules, database design, UI screens, demo script, and viva questions & answers**.
